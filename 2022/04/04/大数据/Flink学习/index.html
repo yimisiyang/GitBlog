@@ -20,29 +20,58 @@
     var CONFIG = {"hostname":"yimisiyang.github.io","root":"/gitblog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="1 Flink概述Apache Flink 是一个框架和分布式处理引擎，用于对无界和有界数据流进行状态计算。 1.1 Flink主要特点 事件驱动 基于流的世界观 在Flink世界观中，一切都是由流组成的，离线数据是有界的流；实时数据是一个没有界限的流：这就是所谓的有界流和无界流。   分层API 越顶层越抽象，表达含义越简明，使用越方便 越底层越具体，表达能力越丰富，使用越灵活 SQL&amp;#x2F">
+<meta property="og:type" content="article">
 <meta property="og:title" content="一米思阳的小屋">
-<meta property="og:url" content="https://yimisiyang.github.io/gitblog/index.html">
+<meta property="og:url" content="https://yimisiyang.github.io/gitblog/2022/04/04/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="一米思阳的小屋">
+<meta property="og:description" content="1 Flink概述Apache Flink 是一个框架和分布式处理引擎，用于对无界和有界数据流进行状态计算。 1.1 Flink主要特点 事件驱动 基于流的世界观 在Flink世界观中，一切都是由流组成的，离线数据是有界的流；实时数据是一个没有界限的流：这就是所谓的有界流和无界流。   分层API 越顶层越抽象，表达含义越简明，使用越方便 越底层越具体，表达能力越丰富，使用越灵活 SQL&amp;#x2F">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220304095628.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220304101059.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220304152937.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220304154357.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220305100636.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220305101606.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220305101934.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220305200416.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220305201240.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220305201708.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220305202449.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220307092332.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220307092948.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220307095636.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220307161040.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220309113845.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220309150909.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220309161236.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220309162652.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220310151305.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220310163815.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220310164149.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220311093501.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220311151027.png">
+<meta property="article:published_time" content="2022-04-04T14:25:39.062Z">
+<meta property="article:modified_time" content="2022-03-11T07:13:25.412Z">
 <meta property="article:author" content="yimisiyang">
 <meta property="article:tag" content="程序猿">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20220304095628.png">
 
-<link rel="canonical" href="https://yimisiyang.github.io/gitblog/">
+<link rel="canonical" href="https://yimisiyang.github.io/gitblog/2022/04/04/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink%E5%AD%A6%E4%B9%A0/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>一米思阳的小屋</title>
+  <title> | 一米思阳的小屋</title>
   
 
 
@@ -140,9 +169,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -158,10 +188,9 @@
       <meta itemprop="name" content="一米思阳的小屋">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+        <h1 class="post-title" itemprop="name headline">
           
-            <a href="/gitblog/2022/04/04/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -191,7 +220,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-Flink概述"><a href="#1-Flink概述" class="headerlink" title="1 Flink概述"></a>1 Flink概述</h1><p>Apache Flink 是一个框架和分布式处理引擎，用于对无界和有界数据流进行状态计算。</p>
+        <h1 id="1-Flink概述"><a href="#1-Flink概述" class="headerlink" title="1 Flink概述"></a>1 Flink概述</h1><p>Apache Flink 是一个框架和分布式处理引擎，用于对无界和有界数据流进行状态计算。</p>
 <h2 id="1-1-Flink主要特点"><a href="#1-1-Flink主要特点" class="headerlink" title="1.1 Flink主要特点"></a>1.1 Flink主要特点</h2><ul>
 <li>事件驱动</li>
 <li>基于流的世界观<ul>
@@ -660,379 +689,30 @@
 <li>Flink会进行状态管理，包括状态一致性、故障处理以及高效存储和访问，以便开发人员可以专注于应用程序的逻辑</li>
 </ol>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yimisiyang.github.io/gitblog/2022/04/04/%E5%B7%A5%E5%85%B7/Git&GitHub%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/gitblog/images/avatar.gif">
-      <meta itemprop="name" content="yimisiyang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一米思阳的小屋">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/gitblog/2022/04/04/%E5%B7%A5%E5%85%B7/Git&GitHub%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-04 22:25:14" itemprop="dateCreated datePublished" datetime="2022-04-04T22:25:14+08:00">2022-04-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-27 13:41:57" itemprop="dateModified" datetime="2022-02-27T13:41:57+08:00">2022-02-27</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Git-amp-Github"><a href="#Git-amp-Github" class="headerlink" title="Git&amp;Github"></a>Git&amp;Github</h1><h2 id="1-版本控制"><a href="#1-版本控制" class="headerlink" title="1.版本控制"></a>1.版本控制</h2><h3 id="1-1-版本控制介绍"><a href="#1-1-版本控制介绍" class="headerlink" title="1.1.版本控制介绍"></a>1.1.版本控制介绍</h3><p>记录历史状态，便于追溯，有后悔药吃</p>
-<h3 id="1-2-版本控制工具介绍"><a href="#1-2-版本控制工具介绍" class="headerlink" title="1.2.版本控制工具介绍"></a>1.2.版本控制工具介绍</h3><h4 id="1-2-1-版本控制工具应该具备的功能"><a href="#1-2-1-版本控制工具应该具备的功能" class="headerlink" title="1.2.1.版本控制工具应该具备的功能"></a>1.2.1.版本控制工具应该具备的功能</h4><ul>
-<li><p>协同修改</p>
-<p>多人并行不悖的修改服务器端的同一个文件</p>
-</li>
-<li><p>数据备份</p>
-<p>不仅保存目求和文件的当前状态，还能够保存每一个提交过的历史状态</p>
-</li>
-<li><p>版本管理</p>
-<p>在保存每一个版本的文件信息的时候要做到不保存重复数据，以节约存储空间提高运行效率。这方面SVN采用的是増量式管理的方式，而Gi采取了文件系统快照的方式。</p>
-</li>
-<li><p>权限控制</p>
-<p>对团队中参与开发的人员进行权限控制</p>
-<p>对团队外开发者页献的代码进行軍核一Git独有</p>
-</li>
-<li><p>历史记录</p>
-<p>査看修改人、修改时间、修改内容、日志信息将本地文件恢复到某一个历史状态</p>
-</li>
-<li><p>分支管理</p>
-<p>允许开发闭队在工作过程中多条生产线同时推进任务，进一步提高效率</p>
-</li>
-</ul>
-<h4 id="1-2-2-版本控制工具介绍"><a href="#1-2-2-版本控制工具介绍" class="headerlink" title="1.2.2.版本控制工具介绍"></a>1.2.2.版本控制工具介绍</h4><ul>
-<li><p>集中式版本控制工具</p>
-<p>CVS、SVN、VSS</p>
-</li>
-<li><p>分布式版本控制工具</p>
-<p>Git、Mercurial、Bazaar、Darcs……</p>
-</li>
-</ul>
-<h2 id="2-Git简介"><a href="#2-Git简介" class="headerlink" title="2.Git简介"></a>2.Git简介</h2><p><img src="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20200430103426.png"></p>
-<h3 id="2-1-Git优势"><a href="#2-1-Git优势" class="headerlink" title="2.1 Git优势"></a>2.1 Git优势</h3><ul>
-<li><p>大部分操作在本地完成，不需要联网</p>
-</li>
-<li><p>完整性保证</p>
-</li>
-<li><p>尽可能添加数据而不是删除或修改数据</p>
-</li>
-<li><p>分支操作非常快捷流畅</p>
-</li>
-<li><p>与 Linux命令全面兼容</p>
-</li>
-</ul>
-<h3 id="2-2-安装Git"><a href="#2-2-安装Git" class="headerlink" title="2.2 安装Git"></a>2.2 安装Git</h3><p><a target="_blank" rel="noopener" href="https://git-scm.com/">Git官网下载地址</a></p>
-<h3 id="2-3-git-结构"><a href="#2-3-git-结构" class="headerlink" title="2.3 git 结构"></a>2.3 git 结构</h3><p><img src="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20200430105717.png"></p>
-<h3 id="2-4-Git-和代码托管中心"><a href="#2-4-Git-和代码托管中心" class="headerlink" title="2.4 Git 和代码托管中心"></a>2.4 Git 和代码托管中心</h3><p>代码托管中心的任务是维护远程库</p>
-<ul>
-<li><p>局域网环境下</p>
-<p>GitLab 服务器</p>
-</li>
-<li><p>外网环境下</p>
-<p>Github</p>
-<p>码云</p>
-</li>
-</ul>
-<h3 id="2-5-本地库和远程库"><a href="#2-5-本地库和远程库" class="headerlink" title="2.5 本地库和远程库"></a>2.5 本地库和远程库</h3><p>团队内开发</p>
-<p><img src="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20200430110437.png"></p>
-<p>团队外部开发</p>
-<p><img src="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20200430110819.png"></p>
-<h2 id="3-Git命令操作"><a href="#3-Git命令操作" class="headerlink" title="3.Git命令操作"></a>3.Git命令操作</h2><h3 id="3-1-本地库操作"><a href="#3-1-本地库操作" class="headerlink" title="3.1 本地库操作"></a>3.1 本地库操作</h3><h4 id="3-1-1-本地库初始化"><a href="#3-1-1-本地库初始化" class="headerlink" title="3.1.1 本地库初始化"></a>3.1.1 本地库初始化</h4><p>查看隐藏文件命令，Linux以 · 开头的文件都是隐藏资源 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -lA</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>进入想要创建git仓库的目录如（F:\GitHubLocalWareHouse），执行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git init  # 初始化</span><br><span class="line">ls -lA    # 查看 .git目录</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20200430111901.png"></p>
-<p><strong>注意：</strong> .git 目录中存放的是本地库相关的子目录和文件，不要删除，不要乱改。</p>
-</li>
-<li><p>设置签名</p>
-<ul>
-<li><p>形式</p>
-<p>用户名：xxx</p>
-<p>Email地址：xxx</p>
-</li>
-<li><p>作用：</p>
-<p>区分不同开发人员的身份</p>
-</li>
-<li><p>辨析：这里设置的签名和登陆远程库（代码托管中心）的账号密码没有关系。</p>
-</li>
-<li><p>命令</p>
-<p>项目级别&#x2F;仓库级别：仅在当前本地仓库范围内有效</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name [用户名]</span><br><span class="line">git config user.email [Email]</span><br></pre></td></tr></table></figure>
-
-<p>系统用户级别：登陆当前操作用户范围</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name [用户名]</span><br><span class="line">git config --global user.email [Email]</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：</strong> 优先级采用就近原则，项目级别优先于系统用户级别，二者都有，采用项目级别签名。二者都没有不允许。</p>
-<p>项目级别设置的签名保存在 <code>.git/config</code>中，该文件为隐藏文件。</p>
-<p>系统用户级别保存在 <code>~/.gitconfig</code>中  ，该文件为隐藏文件。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="3-1-2-基本操作"><a href="#3-1-2-基本操作" class="headerlink" title="3.1.2 基本操作"></a>3.1.2 基本操作</h4><p>查看工作区、暂存区状态</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20200430150557.png"></p>
-<p>将文件的新建或修改从工作区添加到暂存区</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add [filename]</span><br></pre></td></tr></table></figure>
-
-<p>将文件从暂存区撤回来</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached [filename]</span><br></pre></td></tr></table></figure>
-
-<p>将文件从暂存区提交到本地库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit [filename]  # 进VIM编辑器写修改提示</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;提示内容&quot; [文件名]  #这种做法更常见</span><br></pre></td></tr></table></figure>
-
-<p>注意：** 不写文件名将提交暂存区的所有文件</p>
-<h4 id="3-1-3-对版本历史记录进行查看"><a href="#3-1-3-对版本历史记录进行查看" class="headerlink" title="3.1.3 对版本历史记录进行查看"></a>3.1.3 对版本历史记录进行查看</h4><p>（1）查看历史记录：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log    # 查看log日志</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty=oneline   # 每行一条显示日志</span><br><span class="line">git log --oneline          # 和上面相同</span><br><span class="line">git reflog                 # 显示需要移动的步数</span><br></pre></td></tr></table></figure>
-
-<p>（2）执行版本前进后退的三种基本方式（操作HEAD指针）</p>
-<ul>
-<li><p>基于索引值操作【推荐】</p>
-<p>查看当前版本所在的位置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20200430160727.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#   回退到某一个版本</span><br><span class="line">git reset --hard [回退的版本号]</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#   前进到某一个版本</span><br><span class="line">git reset --hard [前进的版本号] </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用^符号（只能后退，不能往前）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^    #加一个^符号回退一步，多个回退多步。</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用~符号(为了化解回退多步时^的尴尬)（同样只能后退）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD~3   # 回退3步</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>（3）reset 命令的三个参数对比</p>
-<ul>
-<li><p>–soft</p>
-<p>仅仅在本地库移动HEAD指针。</p>
-</li>
-<li><p>–mixed</p>
-<p>在本地库移动HEAD指针</p>
-<p>重置暂存区</p>
-</li>
-<li><p>–hard</p>
-<p>在本地库移动HEAD指针，同时重置暂存区和工作区。</p>
-</li>
-</ul>
-<p>（4）删除文件的找回</p>
-<p>​    回退到没有删除的那个版本即可。</p>
-<p>​    <strong>删除文件找回前提：</strong>删除前，文件存在时的状态提交到了本地库。</p>
-<p>（5）比较文件的差异</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff [文件名]   # diff没有其它参数，表示和暂存区进行比较。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff [本地库中历史版本][文件名]  # 将工作区中的文件和本地库历史记录比较</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-1-3-分支管理"><a href="#3-1-3-分支管理" class="headerlink" title="3.1.3 分支管理"></a>3.1.3 分支管理</h4><p>（1）分支介绍</p>
-<img src="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20200430165317.png" style="zoom:50%;" />
-
-<p><strong>分支好处</strong></p>
-<ul>
-<li><p>同时并行推进多个功能开发，提高开发效率</p>
-</li>
-<li><p>各个分支在开发过程中，如果某一个分支开发失败，不会对其他分支有任何影响。失败的分支删除重新开始即可。</p>
-</li>
-</ul>
-<p>（2）分支操作</p>
-<ul>
-<li><p>查看所有分支</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git brach</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建新的分支</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch USB  # 创建USB分支</span><br><span class="line">git checkout -b USB    #创建完成后自动切换到新创建的分支</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>切换分支</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout [branchname]  # 切换分支</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>合并分支(必须站在接受修改的分支上，如master)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 切换到主分支</span><br><span class="line">git checkout master</span><br><span class="line"># 查看当前所在分支</span><br><span class="line">git branch -v</span><br><span class="line"># 合并分支</span><br><span class="line">git merge [有新内容的分支名]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>解决分支冲突</p>
-<p><strong>分支冲突产生原因：</strong></p>
-<p>即在主分支和子分支上对同一个文件进行了修改，并且主分支和子分支都提交到本地库成功了。此时若将子分支合并到master主分支，这时会产生分支冲突。</p>
-<p><strong>冲突表现</strong></p>
-<p><img src="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20200430172603.png"></p>
-<p><strong>冲突解决方法：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">打开产生冲突的文件，删除特殊符号。</span><br><span class="line">vim [文件名]</span><br></pre></td></tr></table></figure>
-
-<p>将产生的冲突删除即可。</p>
-<p>再次使用</p>
-<p><code>git add [文件名]</code></p>
-<p><code>git commit -m &quot;提示内容&quot;</code> </p>
-<p>这里的commit命令不能加文件名，否则会报错。</p>
-</li>
-</ul>
-<h3 id="3-2-远程库操作"><a href="#3-2-远程库操作" class="headerlink" title="3.2 远程库操作"></a>3.2 远程库操作</h3><h4 id="3-2-1-Git-原理"><a href="#3-2-1-Git-原理" class="headerlink" title="3.2.1 Git 原理"></a>3.2.1 Git 原理</h4><ul>
-<li><p>哈希（MD5算法属于哈希的一种）</p>
-<p>哈希是一个系列的加密算法，各个不同的哈希算法虽然加密强度不同，但是有以下几个共同点：</p>
-<p>①不管输入数据的数据量有多大，输入同一个哈希算法，得到的加密结果长度固定。</p>
-<p>②哈希算法确定，输入数据确定，输出数据能够保证不变。</p>
-<p>③哈希算法确定，输入数据有变化，输出数据一定有变化，而且通常变化很大。</p>
-<p>④哈希算法不可逆</p>
-<p>⑤Git底层采用的是SHA-1算法</p>
-<p>哈希算法可以被用来验证文件。原理如下图所示：</p>
-<p><img src="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20200501091933.png"></p>
-</li>
-</ul>
-<h4 id="3-2-2-远程库操作"><a href="#3-2-2-远程库操作" class="headerlink" title="3.2.2 远程库操作"></a>3.2.2 远程库操作</h4><p>在Git终端创建完本地库以后，在创建一个远程库（最好库名一样，方便管理。不做强制要求）</p>
-<p>远程库在github官网创建。</p>
-<ul>
-<li><p>在本地查看git绑定的远程库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20200501095338.png"></p>
-</li>
-<li><p>添加远程库</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/yimisiyang/BigData-java.git</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除绑定的别名</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote remove origin</span><br></pre></td></tr></table></figure>
+        
 
 
-</li>
-<li><p>将本地库推送到远程库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push origin master </span><br><span class="line">git push -u origin master</span><br><span class="line">git push -u origin master -f  #强制推送到远程</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：</strong> pull&#x3D;fetch+merge</p>
-</li>
-<li><p>把远程库克隆到本地库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/yimisiyang/BigData-java.git</span><br></pre></td></tr></table></figure>
-
-<p>（1）完整的把远程库下载到本地</p>
-<p>（2）初始化本地库</p>
-<p>（3）创建origin远程地址别名</p>
-<p>只有邀请别人后，别人才能将克隆后的修改推送到远程库。</p>
-<p><img src="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20200501100632.png"></p>
-<p>邀请别人成功后，别人才能将修改的内容推送到你创建的远程库。</p>
-</li>
-<li><p>git fetch把远程库抓取下来(只是将远程文件下载到本地，并没有和本地进行合并)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin master</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：</strong> git fetch [远程库地址别名] [远程分支名]</p>
-</li>
-<li><p>查看从远程库抓取下来的内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout origin/master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>把远程master合并到本地master</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge origin/master</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：</strong> git merge [远程库地址别名&#x2F;远程分支名]</p>
-</li>
-<li><p>git pull拉去远程库（该操作拉去远程分支后直接与本地分支进行合并）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>团队外的人提交到远程仓库</p>
-<p>（1）fork 别人的项目</p>
-<p>（2）克隆该项目并做修改</p>
-<p>（3）推送到自己的远程库</p>
-<p>（4）发起pull request申请</p>
-<p>（）别人merge 你的 pull request后就好了。</p>
-</li>
-</ul>
-<h4 id="3-2-3-SSH-免密登陆"><a href="#3-2-3-SSH-免密登陆" class="headerlink" title="3.2.3 SSH 免密登陆"></a>3.2.3 SSH 免密登陆</h4><p>生成key</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C 15230034878@163.com</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20200501144600.png"></p>
-<p>读取id_rsa中的内容，将内容复制到github中settings的 ssh and GPG keys</p>
-<p><img src="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20200501145250.png"></p>
-<p>新建一个ssh的别名，添加进去</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin_ssh </span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20200501145108.png"></p>
-<p>再次推送</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin_ssh master</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20200501145518.png"></p>
-<h2 id="4-Git图形化界面操作"><a href="#4-Git图形化界面操作" class="headerlink" title="4.Git图形化界面操作"></a>4.Git图形化界面操作</h2><p>所谓图形化界面即在IDE中对git进行设置。</p>
-<h2 id="5-GitLab服务器环境搭建"><a href="#5-GitLab服务器环境搭建" class="headerlink" title="5.GitLab服务器环境搭建"></a>5.GitLab服务器环境搭建</h2><h3 id="5-1-GitLab-安装"><a href="#5-1-GitLab-安装" class="headerlink" title="5.1 GitLab 安装"></a>5.1 GitLab 安装</h3><p>建议在CentOS7上搭建GitLab服务器。</p>
-<p>从官网下载CentOS版本<a target="_blank" rel="noopener" href="https://about.gitlab.com/install/">安装包</a></p>
-<p>官网给的安装过程</p>
-<p><img src="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20200501151754.png"></p>
-<p>调整后的安装过程</p>
-<p><img src="https://raw.githubusercontent.com/yimisiyang/cloudimage/master/Image/20200501151919.png"></p>
-<h3 id="5-2-GitLab-服务操作"><a href="#5-2-GitLab-服务操作" class="headerlink" title="5.2 GitLab 服务操作"></a>5.2 GitLab 服务操作</h3><p>装完之后重启计算机，然后进行初始化配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：</strong> 该命令会执行很长时间。</p>
-<p>启动gitlab服务</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl start</span><br></pre></td></tr></table></figure>
-
-<p>接下来就可以在浏览器访问了。</p>
-<p>在浏览器输入IP地址访问。若打不开，检查防火墙配置。</p>
-<p>初次登陆需要为gitlab的root用户设置密码。</p>
-<h2 id="6-git-打tag版本"><a href="#6-git-打tag版本" class="headerlink" title="6. git 打tag版本"></a>6. git 打tag版本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">git 打tag</span></span><br><span class="line">git tag -a v0.01.00 -m &#x27;出版代码&#x27;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">指定某个提交打tag标签</span></span><br><span class="line">git tag -a v0.03.00 commit编号 -m &#x27;描述&#x27;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">git 查看tag</span></span><br><span class="line">git tag -ln</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">git 删除本地打错的tag</span></span><br><span class="line">git tag -d v0.01.00</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">git 删除远程打错的tag</span></span><br><span class="line">git push origin :v0.01.00</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">git 推送本地tag到远程</span></span><br><span class="line">git push origin v0.01.00</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">git 克隆指定分支</span></span><br><span class="line"> git clone -b dev_jk http://10.1.1.11/service/tmall-service.git</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">git 版本回退</span></span><br><span class="line">git reset --hard xx</span><br><span class="line">git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
-
-<h2 id="7-github常用配置"><a href="#7-github常用配置" class="headerlink" title="7. github常用配置"></a>7. github常用配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置远程仓库：</span></span><br><span class="line">git remote set-url origin https://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@github.com/yimisiyang/leetcode.git/</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置全局代理：</span></span><br><span class="line">git config --global http.proxy http://127.0.0.1:10809</span><br><span class="line">git config --global https.proxy https://127.0.0.1:10809</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置本工程代理：</span></span><br><span class="line">git config http.proxy http://127.0.0.1:10809</span><br><span class="line">git config https.proxy https://127.0.0.1:10809</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看git全局配置项：</span></span><br><span class="line">git config --global --list</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加远程仓库：</span></span><br><span class="line"> git remote add origin https://github.com/yimisiyang/Mybatis-Study.git</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看远程仓库：</span></span><br><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
-
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/gitblog/2022/04/04/%E5%B7%A5%E5%85%B7/Git&GitHub%E6%95%99%E7%A8%8B/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -1085,6 +765,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Flink%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">1 Flink概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Flink%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Flink主要特点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Flink-%E9%83%A8%E7%BD%B2"><span class="nav-number">2.</span> <span class="nav-text">2 Flink 部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Standalone%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Standalone模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Yarn%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Yarn模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-Flink-on-Yarn"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 Flink on Yarn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-Session-Cluster-%E6%A8%A1%E5%BC%8F%E5%90%AF%E5%8A%A8"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 Session Cluster 模式启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-Per-Job-Cluster-%E6%A8%A1%E5%BC%8F%E5%90%AF%E5%8A%A8"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3 Per Job Cluster 模式启动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Kubernetes%E9%83%A8%E7%BD%B2"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Kubernetes部署</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Flink-%E8%BF%90%E8%A1%8C%E6%9E%B6%E6%9E%84"><span class="nav-number">3.</span> <span class="nav-text">3 Flink 运行架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-Flink%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E7%BB%84%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Flink运行时的组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E4%BB%BB%E5%8A%A1%E6%8F%90%E4%BA%A4%E6%B5%81%E7%A8%8B"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 任务提交流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%8E%9F%E7%90%86"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 任务调度原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-1-%E5%B9%B6%E8%A1%8C%E5%BA%A6"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 并行度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-2-%E7%A8%8B%E5%BA%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%B5%81%EF%BC%88DataFlow%EF%BC%89"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.3.2 程序与数据流（DataFlow）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Flink%E6%B5%81%E5%A4%84%E7%90%86API"><span class="nav-number">4.</span> <span class="nav-text">4 Flink流处理API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-%E5%88%9B%E5%BB%BA%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 创建执行环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 读取数据源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-1-%E4%BB%8E%E9%9B%86%E5%90%88%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">4.2.1.</span> <span class="nav-text">4.2.1 从集合读取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-2-%E4%BB%8E%E6%96%87%E6%9C%AC%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">4.2.2.</span> <span class="nav-text">4.2.2 从文本中读取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-3-%E4%BB%8Esocket%E6%B5%81%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">4.2.3.</span> <span class="nav-text">4.2.3 从socket流中读取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-4-%E4%BB%8Ekafka%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">4.2.4.</span> <span class="nav-text">4.2.4 从kafka中读取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-5-%E4%BB%8ERabbitMQ%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">4.2.5.</span> <span class="nav-text">4.2.5 从RabbitMQ中读取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-6-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="nav-number">4.2.6.</span> <span class="nav-text">4.2.6 自定义数据源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-%E8%BD%AC%E6%8D%A2%E7%AE%97%E5%AD%90"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 转换算子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-1-map%E7%AE%97%E5%AD%90"><span class="nav-number">4.3.1.</span> <span class="nav-text">4.3.1 map算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-2-FlatMap-%E7%AE%97%E5%AD%90"><span class="nav-number">4.3.2.</span> <span class="nav-text">4.3.2  FlatMap 算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-3-Filter-%E7%AE%97%E5%AD%90"><span class="nav-number">4.3.3.</span> <span class="nav-text">4.3.3 Filter 算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-4-KeyBy%E7%AE%97%E5%AD%90"><span class="nav-number">4.3.4.</span> <span class="nav-text">4.3.4 KeyBy算子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-4-1-%E6%BB%9A%E5%8A%A8%E8%81%9A%E5%90%88%E7%AE%97%E5%AD%90%EF%BC%88Rolling-Aggregation%EF%BC%89"><span class="nav-number">4.3.4.1.</span> <span class="nav-text">4.3.4.1 滚动聚合算子（Rolling Aggregation）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-4-2-Reduce"><span class="nav-number">4.3.4.2.</span> <span class="nav-text">4.3.4.2 Reduce</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-5-%E5%A4%9A%E6%B5%81%E8%BD%AC%E6%8D%A2%E7%AE%97%E5%AD%90"><span class="nav-number">4.3.5.</span> <span class="nav-text">4.3.5 多流转换算子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-5-1-Connect-amp-amp-CoMap-amp-amp-CoFlatMap"><span class="nav-number">4.3.5.1.</span> <span class="nav-text">4.3.5.1 Connect&amp;&amp;CoMap&amp;&amp;CoFlatMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-5-2-Union"><span class="nav-number">4.3.5.2.</span> <span class="nav-text">4.3.5.2 Union</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-Flink%E6%94%AF%E6%8C%81%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 Flink支持的数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-1-%E6%94%AF%E6%8C%81%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.4.1.</span> <span class="nav-text">4.4.1 支持的数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-2-Java-%E5%85%83%E7%BB%84"><span class="nav-number">4.4.2.</span> <span class="nav-text">4.4.2 Java 元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-3-POJOs"><span class="nav-number">4.4.3.</span> <span class="nav-text">4.4.3 POJOs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-4-%E5%8E%9F%E5%A7%8B%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.4.4.</span> <span class="nav-text">4.4.4 原始类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-5-%E5%85%B6%E5%AE%83%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.4.5.</span> <span class="nav-text">4.4.5 其它类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-%E5%AE%9E%E7%8E%B0UDF%E5%87%BD%E6%95%B0-%E6%9B%B4%E7%BB%86%E7%B2%92%E5%BA%A6%E7%9A%84%E6%8E%A7%E5%88%B6%E6%B5%81"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 实现UDF函数-更细粒度的控制流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-1-%E5%87%BD%E6%95%B0%E7%B1%BB%EF%BC%88Function-Classes%EF%BC%89"><span class="nav-number">4.5.1.</span> <span class="nav-text">4.5.1 函数类（Function Classes）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-6-Sink"><span class="nav-number">4.6.</span> <span class="nav-text">4.6 Sink</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-1-kafka-Sink"><span class="nav-number">4.6.1.</span> <span class="nav-text">4.6.1 kafka Sink</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-2-Redis-Sink"><span class="nav-number">4.6.2.</span> <span class="nav-text">4.6.2 Redis Sink</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-3-JDBC-Sink"><span class="nav-number">4.6.3.</span> <span class="nav-text">4.6.3 JDBC Sink</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-Flink-Window-API"><span class="nav-number">5.</span> <span class="nav-text">5 Flink Window API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-Window-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 Window 的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-Flink-%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E7%AA%97%E5%8F%A3"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 Flink 中常见的窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-%E6%BB%9A%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 滚动窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="nav-number">5.4.</span> <span class="nav-text">5.4 滑动窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-5-%E4%BC%9A%E8%AF%9D%E7%AA%97%E5%8F%A3"><span class="nav-number">5.5.</span> <span class="nav-text">5.5 会话窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-6-%E5%85%A8%E5%B1%80%E7%AA%97%E5%8F%A3"><span class="nav-number">5.6.</span> <span class="nav-text">5.6 全局窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-7-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="nav-number">5.7.</span> <span class="nav-text">5.7 窗口函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-7-1-Reduce-Function"><span class="nav-number">5.7.1.</span> <span class="nav-text">5.7.1 Reduce Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-7-2-Aggregate-Function"><span class="nav-number">5.7.2.</span> <span class="nav-text">5.7.2 Aggregate Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-7-3-ProcessWindowFunction"><span class="nav-number">5.7.3.</span> <span class="nav-text">5.7.3 ProcessWindowFunction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-7-4-%E5%85%B7%E6%9C%89%E5%A2%9E%E9%87%8F%E8%81%9A%E5%90%88%E7%9A%84ProcessWindowFunction"><span class="nav-number">5.7.4.</span> <span class="nav-text">5.7.4 具有增量聚合的ProcessWindowFunction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-7-5-%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="nav-number">5.7.5.</span> <span class="nav-text">5.7.5 触发器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-7-6-%E7%A7%BB%E9%99%A4%E5%99%A8"><span class="nav-number">5.7.6.</span> <span class="nav-text">5.7.6 移除器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-7-7-%E5%85%81%E8%AE%B8%E5%A4%84%E7%90%86%E8%BF%9F%E5%88%B0%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">5.7.7.</span> <span class="nav-text">5.7.7 允许处理迟到的数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-7-8-%E5%B0%86%E8%BF%9F%E5%88%B0%E7%9A%84%E6%95%B0%E6%8D%AE%E6%94%BE%E5%85%A5%E4%BE%A7%E8%BE%93%E5%87%BA%E6%B5%81"><span class="nav-number">5.7.8.</span> <span class="nav-text">5.7.8 将迟到的数据放入侧输出流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-7-9-%E8%8E%B7%E5%8F%96%E4%BE%A7%E8%BE%93%E5%87%BA%E6%B5%81"><span class="nav-number">5.7.9.</span> <span class="nav-text">5.7.9 获取侧输出流</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-%E6%97%B6%E9%97%B4%E8%AF%AD%E4%B9%89%E5%92%8C-watermark"><span class="nav-number">6.</span> <span class="nav-text">6 时间语义和 watermark</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-%E6%97%B6%E9%97%B4%E8%AF%AD%E4%B9%89"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 时间语义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-Event-Time%E5%92%8CWatermarks"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 Event Time和Watermarks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-watermark%E7%9A%84%E4%BC%A0%E9%80%92"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 watermark的传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-4-watermark%E4%BB%A3%E7%A0%81%E6%A1%88%E4%BE%8B"><span class="nav-number">6.4.</span> <span class="nav-text">6.4 watermark代码案例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-Flink-%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text">7 Flink 状态管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-Flink%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 Flink中的状态</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
